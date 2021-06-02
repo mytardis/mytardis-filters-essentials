@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS base
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -45,7 +45,7 @@ RUN pip3 install wheel
 
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'https://cran.csiro.au/'; options(repos = r);" > ~/.Rprofile
 RUN Rscript -e "install.packages('BiocManager')"
-RUN Rscript -e "BiocManager::install('flowCore', version='3.8')"
-RUN Rscript -e "BiocManager::install('flowViz', version='3.8')"
+RUN Rscript -e "BiocManager::install('flowCore', version='3.10')"
+RUN Rscript -e "BiocManager::install('flowViz', version='3.10')"
 
 COPY policy.xml /etc/ImageMagick-6/policy.xml
